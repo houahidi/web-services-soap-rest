@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>CalculWeb-page d'accueil</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row col-md-12">
+			<div class="jumbotron">
+				<h3>Calculatrice</h3>
+				<form action="calculer">
+					<div class="form-group">
+						<label for="operateur">Opérateur:</label> 
+						<select name="operateur"
+							class="form-control" id="operateur">
+							<option value="1">Addition</option>
+							<option value="2">Soustraction</option>
+							<option value="4">Division</option>
+							<option value="3">Multiplication</option>
+						</select>	
+					</div>
+					<div class="form-group">
+						<label for="operande1">Opérande1</label> 
+						<input type="number"
+							class="form-control" id="operande1" name="operande1">
+					</div>
+					<div class="form-group">
+						<label for="operande2">Opérande2</label> <input type="number"
+							class="form-control" id="operande2" name="operande2">
+					</div>
+					<button type="submit" class="btn btn-success">Valider</button>
+
+				</form>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>

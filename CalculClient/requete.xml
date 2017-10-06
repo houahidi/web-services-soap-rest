@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:RequeteAddition xmlns:ns2="http://document.soap.service.carsat.fr/">
+    <Operande1>6.1</Operande1>
+    <Operande2>6.1</Operande2>
+</ns2:RequeteAddition>

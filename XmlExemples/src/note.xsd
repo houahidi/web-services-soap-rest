@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="http://www.example.org/note"
+ xmlns:tns="http://www.example.org/note" elementFormDefault="qualified"> 
+	<element name="to" type="tns:ToType"/>
+	
+	<element name="from" type="string"/>
+	<element name="heading" type="string"/>
+	<element name="body" type="string"/>
+	<element name="note">
+		<complexType>
+			<sequence>
+				<element ref="tns:to" minOccurs="1" maxOccurs="1"/>
+				<element ref="tns:from" minOccurs="1" maxOccurs="1"/>
+				<element ref="tns:heading" minOccurs="1" maxOccurs="1"/>
+				<element ref="tns:body" minOccurs="1" maxOccurs="1"/>			
+			</sequence>				
+		</complexType>	
+	</element>
+	
+	<complexType name="ToType">
+			<simpleContent>
+				<extension base="string">
+					<attribute name="age" type="integer" />
+				</extension>				
+			</simpleContent>			
+		</complexType>
+	
+	
+</schema>

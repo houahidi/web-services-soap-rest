@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>ClientWeb- creation d'un nouveau client</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row col-md-12">
+			<div class="jumbotron">
+				<h3>Client</h3>
+				<form action="rest/clientsrs" method="post">
+					<div class="form-group">
+						<label for="id">Identifiant:</label> 
+						<input type="number"
+							class="form-control" id="id" name="id">	
+					</div>
+					<div class="form-group">
+						<label for="nom">Nom</label> 
+						<input type="text"
+							class="form-control" id="nom" name="nom">
+					</div>
+					<div class="form-group">
+						<label for="prenom">Prénom</label> <input type="text"
+							class="form-control" id="prenom" name="prenom">
+					</div>
+					<button type="submit" class="btn btn-success">Valider</button>
+
+				</form>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>

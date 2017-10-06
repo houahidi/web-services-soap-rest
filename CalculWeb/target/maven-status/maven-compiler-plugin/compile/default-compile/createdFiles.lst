@@ -1,0 +1,8 @@
+fr\orsys\service\calcul\CalculatriceContrat.class
+fr\orsys\service\calcul\ObjectFactory.class
+fr\orsys\service\calcul\CalculService.class
+fr\orsys\service\calcul\NotifierRequete.class
+fr\orsys\service\calcul\package-info.class
+fr\orsys\calcul\web\CalculServlet.class
+fr\orsys\service\calcul\Calculer.class
+fr\orsys\service\calcul\CalculerResponse.class

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:ReponseAddition xmlns:ns2="http://document.soap.service.carsat.fr/">
+    <Resultat>12.2</Resultat>
+</ns2:ReponseAddition>

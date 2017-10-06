@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>ClientWeb- creation d'un nouveau client</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+	
+	 var url = "http://localhost:8080/ClientsWeb/rest/clientsrs/json";
+	 
+	 $scope.ajouter = true; 
+	 
+	 $http.get(url)
+	    .then(function(response) {
+	    	 $scope.clients = response.data;
+	    });
+	
+	
+    
+    $scope.ajouter = function(){
+    	console.log("action ajouter");
+    	
+    	$http.post(url,$scope.client).then(function(response) {
+ 	    	console.log("Statut ajouter" + response.data);  
+ 	    	
+ 	    	 $http.get(url).then(function(response) {
+  		    	 $scope.clients = response.data;
+  		    }); 	
+ 	    });
+    	
+    };
+    
+    
+    $scope.modifier = function(client){
+    	console.log("action modifier");    	
+    	$scope.client =  client;
+    	$scope.ajouter = false;
+    	
+    }
+    
+    
+    $scope.valider = function(){
+    	console.log("action valider");    	
+    	 $http.put(url,$scope.client).then(function(response) {
+ 	    	console.log("Statut valider" + response.data);  
+ 	    	
+ 	    	 $http.get(url).then(function(response) {
+  		    	 $scope.clients = response.data;
+  		    }); 	
+ 	    	$scope.ajouter = true;
+    	 });
+    	
+    }
+    
+    $scope.supprimer = function(client){
+    	console.log("action supprimer" + client.Identifiant);
+    	 $http.delete(url+"/id/"+client.Identifiant)
+ 	    .then(function(response) { 	    	
+ 	    	console.log("Statut " + response.data); 	
+ 	    	
+ 	    	 $http.get(url)
+ 		    .then(function(response) {
+ 		    	 $scope.clients = response.data;
+ 		    }); 	    	
+ 	    });
+    }
+});
+</script>	
+</head>
+<body>
+	<div class="container" data-ng-app="myApp" data-ng-controller="myCtrl">
+		<div class="row col-md-12">
+			<div class="jumbotron">
+				<h3>Client</h3>
+				<form action="rest/clientsrs" method="post" name="ClientForm">
+					<div class="form-group">
+						<label for="id">Identifiant:</label> 
+						<input type="number" data-ng-model="client.Identifiant"
+							class="form-control" id="id" name="id" required>	
+					</div>
+					<div class="form-group">
+						<label for="nom">Nom</label> 
+						<input type="text"
+							class="form-control" id="nom" data-ng-model="client.Nom" name="nom" required>
+					</div>
+					<div class="form-group">
+						<label for="prenom">Prénom</label> 
+						<input type="text" data-ng-model="client.Prenom"
+							class="form-control" id="prenom" name="prenom" required>
+					</div>
+					<button data-ng-show="ajouter" type="button" data-ng-click="ajouter();" 
+							data-ng-disabled="!ClientForm.$valid"
+						class="btn btn-success" >Ajouter</button>
+					<button data-ng-hide="ajouter" type="button" data-ng-click="valider();" class="btn btn-success" >Valider</button>
+				</form>
+			</div>
+			<h2>Les clients</h2>
+			<table class="table table-bordered table-striped">
+				<tr>
+					<th>Identifiant</th>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Actions</th>
+				</tr>
+				<tr data-ng-repeat="client in clients">
+					<td>{{client.Identifiant}}</td>
+					<td>{{client.Nom}}</td>
+					<td>{{client.Prenom}}</td>
+					<td>
+						<button  data-ng-click="supprimer(client);" class="btn btn-danger">Supprimer</button>
+						<button data-ng-click="modifier(client);" class="btn btn-info">Modifier</button>
+					
+					</td>
+				</tr>
+			
+			</table>
+		</div>
+
+	</div>
+
+</body>
+</html>

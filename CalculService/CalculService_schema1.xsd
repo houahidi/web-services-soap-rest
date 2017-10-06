@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="calcul.service.orsys.fr" xmlns:tns="calcul.service.orsys.fr" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="Calculer" type="tns:Calculer"/>
+
+  <xs:element name="CalculerResponse" type="tns:CalculerResponse"/>
+
+  <xs:element name="NotifierRequete" type="tns:NotifierRequete"/>
+
+  <xs:complexType name="Calculer">
+    <xs:sequence>
+      <xs:element name="Operateur" type="tns:operateurs" minOccurs="0"/>
+      <xs:element name="Operande1" type="xs:double"/>
+      <xs:element name="Operande2" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CalculerResponse">
+    <xs:sequence>
+      <xs:element name="Resultat" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="NotifierRequete">
+    <xs:sequence>
+      <xs:element name="Qui" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="operateurs">
+    <xs:restriction base="xs:int">
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="2"/>
+      <xs:enumeration value="3"/>
+      <xs:enumeration value="4"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+
